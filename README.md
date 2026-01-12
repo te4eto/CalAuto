@@ -9,7 +9,10 @@ TODO: Guide users through getting your code up and running on their own system. 
 4.	API references
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+   ```bash
+   .\gradlew test
+   ```
+
 
 # Contribute
 TODO: Explain how other users and developers can contribute to make your code better. 
@@ -18,3 +21,75 @@ If you want to learn more about creating good readme files then refer the follow
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
 - [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+
+## TestNG Configuration
+
+⚠️ **Important:**  
+Whenever a new test package is added, it must be included in the `testng.xml` file to ensure the tests are executed.
+```
+<packages>
+    <package name="calsuite.tests.authorisation"/>
+    ...
+</packages>
+```
+
+## Project Structure
+
+```
+CALsuite-QA [RestAssuredWrapper]
+src
+├── main
+│   ├── java
+│   │   └── calsuite
+│   │       ├── api
+│   │       │   └── response                     # Response wrapper
+│   │       ├── auth                             # Auth manager
+│   │       ├── constants                        # Constants
+│   │       ├── models                           # DTO holder
+│   │       │   ├── general
+│   │       │   ├── request                      # Request DTOs
+│   │       │   │   ├── service_1
+│   │       │   │   │   ├── controller_1
+│   │       │   │   │   └── controller_2
+│   │       │   │   └── service_2
+│   │       │   │       ├── controller_1
+│   │       │   │       └── controller_2
+│   │       │   └── response                     # Response DTOs
+│   │       │       ├── common
+│   │       │       │   └── responses            # Shared response objects
+│   │       │       ├── service_1
+│   │       │       │   ├── controller_1
+│   │       │       │   └── controller_2
+│   │       │       └── service_2
+│   │       │           ├── controller_1
+│   │       │           └── controller_2
+│   │       ├── services                         # API client & request logic
+│   │       │   ├── service_1
+│   │       │   │   ├── controller_1
+│   │       │   │   └── controller_2
+│   │       │   └── service_2
+│   │       │       ├── controller_1
+│   │       │       └── controller_2
+│   │       └── utils
+│   └── resources
+│
+└── test
+    ├── java
+    │   └── calsuite
+    │       ├── testdata                         # Test input / payloads
+    │       │   ├── service_1
+    │       │   │   ├── controller_1
+    │       │   │   └── controller_2
+    │       │   └── service_2
+    │       │       ├── controller_1
+    │       │       └── controller_2
+    │       └── tests                            # Test cases
+    │           ├── service_1
+    │           │   ├── controller_1
+    │           │   └── controller_2
+    │           └── service_2
+    │               ├── controller_1
+    │               └── controller_2
+    └── resources
+```

@@ -2,7 +2,11 @@
 <suite name="RestAssuredWrapperSuite">
     <test name="AllTests">
         <packages>
-            <package name="calsuiteTests.*"/>
+            <package name="calsuite.tests.authorisation"/>
+            <package name="calsuite.tests.enterprise"/>
+            <package name="calsuite.tests.hurequest"/>
+            <package name="calsuite.tests.item"/>
+            <package name="calsuite.tests.migratedTests"/>
         </packages>
     </test>
 </suite>

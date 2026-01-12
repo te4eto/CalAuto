@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
 plugins {
     id("java")
 }
@@ -10,6 +12,8 @@ repositories {
 }
 
 dependencies {
+
+    implementation ("com.github.javafaker:javafaker:1.0.2")
 
     implementation("io.rest-assured:rest-assured:5.5.1")
 
@@ -26,7 +30,16 @@ dependencies {
     testImplementation("org.testng:testng:7.11.0")
 
 }
+java {
+    sourceCompatibility = JavaVersion.VERSION_14
+    targetCompatibility = JavaVersion.VERSION_14
+}
 
 tasks.test {
     useTestNG()
+    testLogging {
+        events ("passed", "skipped", "failed")
+        exceptionFormat = TestExceptionFormat.FULL
+        showStandardStreams = true
+    }
 }
