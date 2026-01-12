@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="RestAssuredWrapperSuite">
+    <test name="AllTests">
+        <packages>
+            <package name="calsuiteTests.*"/>
+        </packages>
+    </test>
+</suite>

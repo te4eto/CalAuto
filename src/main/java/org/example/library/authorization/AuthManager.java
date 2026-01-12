@@ -1,0 +1,25 @@
+package org.example.library.authorization;
+
+import lombok.Getter;
+import org.example.library.models.general.Configuration;
+
+public class AuthManager {
+
+    @Getter
+    private static String token;
+
+    public static void initializeToken() throws Exception {
+        token = fetchToken();
+    }
+
+    private static String fetchToken() throws Exception {
+        if (Configuration.getEnvironmentValue().equals("CLOUD")) {
+            return PoCFetcher.getBearerToken();
+        } else if (Configuration.getEnvironmentValue().equals("LOCAL")) {
+            //add cookie logic if needed
+            return "Cookie";
+        } else {
+            throw new Exception("invalid env");
+        }
+    }
+}
